@@ -1,3 +1,7 @@
+"""
+Component function, used in crawling.py
+"""
+
 import pandas as pd 
 import glob 
 import os
