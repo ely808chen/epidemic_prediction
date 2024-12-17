@@ -1,3 +1,20 @@
+"""
+Main file to scrape data and process to readable csv file. 
+
+Data Source: https://survey.tmiph.metro.tokyo.lg.jp/epidinfo/weeklyhc.do
+
+The script (1) scrapes all epidemic data from a website (via clicking csv download button)
+for each selected year and (2) process the raw data to make it readable. 
+
+Output: Weekly epidemic data in csv format during the selected years 
+
+Usage: 
+(1) Select start_year, the year that you want to start downloading (weeks does not matter)
+(2) Select End_Year, presumably the current year 
+(3) Change WKS_UPPER_RANGE_CUR_YR_INCL, the most recent wk number 
+(4) Simply run main() 
+"""
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -18,15 +35,16 @@ END_DIR = DOWNLOAD_DIR
 TARGET_URL = "https://survey.tmiph.metro.tokyo.lg.jp/epidinfo/weeklyhc.do"
 
 SPECIAL_YEARS_WITH_53_WEEKS = [2004, 2009, 2015, 2020]
-WKS_UPPER_RANGE_SPECIAL_YR_INCL = 53
+WKS_UPPER_RANGE_SPECIAL_YR_INCL = 53  
 WKS_UPPER_RANGE_REG_YR_INCL = 52
-WKS_UPPER_RANGE_CUR_YR_INCL = 49
-START_YEAR = 2003
-END_YEAR = 2024
+WKS_UPPER_RANGE_CUR_YR_INCL = 49  #### TO DO: CHANGE THIS VAL ACC TO NEEDS ####
+START_YEAR = 2024  #### TO DO: CHANGE THIS VAL ACC TO NEEDS ####
+END_YEAR = 2024  #### TO DO: CHANGE THIS VAL ACC TO NEEDS ####
 
 # retrieves raw data from crawling thru data webpage, downloading raw data in the data directory
 def main():
     try:
+
         for year in range(START_YEAR, END_YEAR + 1):
 
             download_dir = DOWNLOAD_DIR
